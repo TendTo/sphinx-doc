@@ -67,6 +67,7 @@ html_theme = 'sphinx_rtd_theme' # [optional, to use the far superior Read the Do
 # Ignore everything in this directory
 /*
 # Except these files
+!.gitignore
 !docs/
 !README.md
 ```

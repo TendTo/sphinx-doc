@@ -18,10 +18,10 @@ Also, it is always assumed that your current working directory is the root direc
 ```
 
 ### Whip out the console
-- Run `sphinx-quickstart --sep --ext-autodoc ./.sphinx` This will create the _.sphinx_ directory and its structure
+- Run `sphinx-quickstart --sep --ext-autodoc ./docs` This will create the _docs_ directory and its structure
 
 ### Don't get lost in _conf.py_
-- In _.sphinx/source_ you will find a _conf.py_ file. Edit the following
+- In _docs/source_ you will find a _conf.py_ file. Edit the following
 ``` python
 # -- Path setup --------------------------------------------------------------
 
@@ -53,27 +53,20 @@ html_theme = 'sphinx_rtd_theme' # [optional, to use the far superior Read the Do
 ```
 
 ### The show must go on
-- **Run** `sphinx-apidoc -o .sphinx/source .` This will try to find all the modules in your project and generate the corresponding _.rts_ file
-- Make sure the _.sphinx/source/index.rts_ file links to all the other _.rts_ files you want to include in the documentation
-- \[Optional\] Edit the _.rts_ files in the _.sphinx/source_ directory in a way you like. Nobody will judge you (**maybe**)
-- **Run** `sphinx-build -b html .sphinx\source .sphinx\build`
-- **Run** `.sphinx\make html` or `cd .sphinx && make html` This will generate the final result in _.sphinx/build_. You can see it for yourself launching _.sphinx/build/html/index.html_
+- **Run** `sphinx-apidoc -o docs/source .` This will try to find all the modules in your project and generate the corresponding _.rts_ file
+- Make sure the _docs/source/index.rts_ file links to all the other _.rts_ files you want to include in the documentation
+- \[Optional\] Edit the _.rts_ files in the _docs/source_ directory in a way you like. Nobody will judge you (**maybe**)
+- **Run** `sphinx-build -b html docs/source docs/build`
+- **Run** `docs/make html`. This will generate the final result in _docs/build_. You can see it for yourself by opening _docs/build/html/index.html_ in the browser
 
 
 ### Haven't you used your github page yet?
-- **Run** `git checkout --orphan gh-pages` This will create a branch that starts with a different root commit
-- Create the _.gitignore_ file like this
-``` .gitignore
-# Ignore everything in this directory
-/*
-# Except these files
-!.gitignore
-!docs/
-!README.md
-```
-- \[Optional\] Create a README.md file to explain what are you doing in this branch and you think this was a good idea
-- Create a _docs_ directory and copy everything from _.sphinx/build/html_ into this _docs_ you just created
+- Make sure the path _docs/build_ is present in the _.gitignore_
+- Rename the _html_ folder to _docs_
 - Create a _.nojekyll_ empty file and put it in the _docs_ directory too (because otherwise the github-page isn't happy or something like that)
+- \[Optional\] Create a README.md file to explain what are you doing in this branch and you think this was a good idea
+- **Run** `git worktree add ./docs/build gh-pages` to add the worktree to the current repository. It is in fact a repository inside the repository
+- **Run** `cd ./docs/build && git add -A && git commit -m "docs: added documentation"` to commit the documentation
 - Push it to github and, in the settings tab of your repository, make sure the github-page is looking for the _index.html_ file in the right folder
 - \[optional\] Add the newly created github-page to the description of your repository
 - **?**

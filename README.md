@@ -14,7 +14,7 @@ Also, it is always assumed that your current working directory is the root direc
 - Add the following to the _.gitignore_ to avoid committing useless junk (you could also try adding * for a better result)
 ``` .gitignore
 # Sphinx documentation
-.sphinx
+docs/build
 ```
 
 ### Whip out the console

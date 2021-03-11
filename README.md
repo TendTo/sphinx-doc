@@ -39,8 +39,9 @@ sys.path.insert(0, os.path.abspath('../..'))  # path to the actual project root 
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',   # to autodocument your code
-    'sphinx.ext.napoleon',  # to use NumPy and Google style docstrings
+    'sphinx.ext.autodoc',       # to autodocument your code
+    'sphinx.ext.napoleon',      # to use NumPy and Google style docstrings
+    'sphinx.ext.githubpages',   # generates the .nojekyll file
     ]
 ```
 ``` python
@@ -50,6 +51,17 @@ extensions = [
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme' # [optional, to use the far superior Read the Docs theme]
+```
+``` python
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
+html_css_files = [
+    'css/dark.css',
+]
+
+html_logo = "_static/img/logo.jpg"
 ```
 
 ### The show must go on
